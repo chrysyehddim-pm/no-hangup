@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>不要掛電話｜互動鬼故事 Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" aria-live="polite">
+    <section id="screen" class="screen cover">
+      <img id="bg" class="bg" src="assets/images/cover-start.jpg" alt="不要掛電話封面" />
+      <img id="ghost" class="ghost hidden" src="assets/images/ghost-overlay.png" alt="" />
+      <div id="dynamic" class="dynamic hidden"></div>
+      <button id="startBtn" class="hotspot start-hotspot" aria-label="開始遊戲"></button>
+      <div id="tapHint" class="tap-hint">點擊「開始」後建議開啟聲音</div>
+    </section>
+  </main>
+
+  <audio id="bgm" src="assets/audio/bgm-ambient.wav" loop preload="auto"></audio>
+  <audio id="ringNormal" src="assets/audio/ringtone-normal.wav" loop preload="auto"></audio>
+  <audio id="ringBreath" src="assets/audio/ringtone-breath.wav" loop preload="auto"></audio>
+  <audio id="jump" src="assets/audio/jumpscare-hit.wav" preload="auto"></audio>
+  <audio id="notify" src="assets/audio/notification.wav" preload="auto"></audio>
+  <audio id="mirror" src="assets/audio/mirror-ending.wav" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
