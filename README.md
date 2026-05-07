@@ -1,8 +1,17 @@
-# 不要掛電話｜互動鬼故事 Demo v3
+# 不要掛電話｜互動鬼故事 Demo v4
 
 這是使用 AI 協作製作的互動式網頁 Demo，可直接上傳 GitHub Pages。
 
-## v3 修正重點
+## v4 修正重點
+
+- 裝飾型文字改成圖片資產，避免 Safari fallback 成普通系統字
+- 首頁主標、副標改為 `title-main.png` / `title-subtitle.png`
+- Jump scare 大字「我就在你身旁」改為 `scary-text-nearby.png`
+- 對話框、角色名牌、按鈕仍維持 HTML 文字，方便修改與保持可讀性
+- 保留 `navigator.vibrate()`，但不依賴 iPhone Safari 震動支援
+- 不支援震動時，使用更強的 screen shake / flash / glitch 補足衝擊感
+
+## v3 基礎修正
 
 - 修正 v2「背景圖已內嵌文字與 UI，HTML 又覆蓋一次」的問題
 - 一般場景背景圖改為「無字純底圖」

@@ -28,9 +28,19 @@ function safePlay(a, vol = 0.8) {
 }
 function stop(a) { try { a.pause(); a.currentTime = 0; } catch(e) {} }
 function stopRings(){ stop(audio.normal); stop(audio.breath); }
+
+function tryVibrate(pattern = [80, 40, 120]) {
+  if (!('vibrate' in navigator)) return false;
+  try {
+    navigator.vibrate(pattern);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 function clearTransientLayers(){
-  screen.classList.remove('shake');
-  screen.querySelectorAll('.flash,.glitch-layer,.bottom-fog,.scary-text').forEach(el => el.remove());
+  screen.classList.remove('shake', 'extra-impact');
+  screen.querySelectorAll('.flash,.glitch-layer,.bottom-fog,.scary-text,.scary-text-img').forEach(el => el.remove());
 }
 function setImage(src, cls='scene') {
   clearTransientLayers();
@@ -101,16 +111,16 @@ function addFog(){
   screen.appendChild(fog);
 }
 function addScaryText(){
-  const msg = document.createElement('div');
-  msg.className = 'scary-text show';
-  msg.innerHTML = '我就在你<span class="red">身旁</span>';
+  const msg = document.createElement('img');
+  msg.className = 'scary-text-img show';
+  msg.src = 'assets/images/scary-text-nearby.png';
+  msg.alt = '我就在你身旁';
   screen.appendChild(msg);
 }
 function triggerGhost(){
   dynamic.classList.add('hidden');
-  if (navigator.vibrate) {
-    try { navigator.vibrate([80, 40, 120]); } catch(e) {}
-  }
+  const vibrated = tryVibrate([80, 40, 120]);
+  if (!vibrated) screen.classList.add('extra-impact');
   safePlay(audio.jump, .88);
   screen.classList.add('shake');
   const flash = document.createElement('div'); flash.className='flash'; screen.appendChild(flash); setTimeout(()=>flash.remove(),450);
